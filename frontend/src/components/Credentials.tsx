@@ -82,15 +82,15 @@ export function Credentials({ onBack }: CredentialsProps) {
 
   if (!isConnected) {
     return (
-      <div className="pt-24 px-4 max-w-4xl mx-auto text-center">
-        <div className="card">
-          <div className="w-16 h-16 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="pt-24 pb-12 px-4 max-w-4xl mx-auto text-center">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <div className="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold mb-2">Wallet Not Connected</h2>
-          <p className="text-slate-400">Please connect your wallet to view credentials.</p>
+          <h2 className="text-xl font-display font-semibold text-gray-900 mb-2">Wallet Not Connected</h2>
+          <p className="text-gray-500">Please connect your wallet to view credentials.</p>
         </div>
       </div>
     );
@@ -98,17 +98,17 @@ export function Credentials({ onBack }: CredentialsProps) {
 
   if (!hasIdentity) {
     return (
-      <div className="pt-24 px-4 max-w-4xl mx-auto text-center">
-        <div className="card">
-          <div className="w-16 h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="pt-24 pb-12 px-4 max-w-4xl mx-auto text-center">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <div className="w-16 h-16 rounded-full bg-violet-100 flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
-          <h2 className="text-xl font-semibold mb-2">No Identity Found</h2>
-          <p className="text-slate-400 mb-4">Create a VeriChain identity first to manage credentials.</p>
+          <h2 className="text-xl font-display font-semibold text-gray-900 mb-2">No Identity Found</h2>
+          <p className="text-gray-500 mb-4">Create a VeriChain identity first to manage credentials.</p>
           {onBack && (
-            <button onClick={onBack} className="btn-primary">
+            <button onClick={onBack} className="bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl shadow-lg hover:from-violet-600 hover:to-purple-700 px-6 py-3 font-medium transition-all">
               Create Identity
             </button>
           )}
@@ -195,13 +195,13 @@ export function Credentials({ onBack }: CredentialsProps) {
   const getStatusBadge = (status: Credential['status']) => {
     switch (status) {
       case 'valid':
-        return <span className="px-2 py-1 text-xs rounded-full bg-emerald-500/20 text-emerald-400">Valid</span>;
+        return <span className="px-2 py-1 text-xs rounded-full bg-emerald-100 text-emerald-600">Valid</span>;
       case 'expired':
-        return <span className="px-2 py-1 text-xs rounded-full bg-red-500/20 text-red-400">Expired</span>;
+        return <span className="px-2 py-1 text-xs rounded-full bg-red-100 text-red-600">Expired</span>;
       case 'revoked':
-        return <span className="px-2 py-1 text-xs rounded-full bg-red-500/20 text-red-400">Revoked</span>;
+        return <span className="px-2 py-1 text-xs rounded-full bg-red-100 text-red-600">Revoked</span>;
       case 'pending':
-        return <span className="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400">Pending</span>;
+        return <span className="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-600">Pending</span>;
     }
   };
 
@@ -238,26 +238,26 @@ export function Credentials({ onBack }: CredentialsProps) {
 
   if (isLoading) {
     return (
-      <div className="pt-24 px-4 max-w-4xl mx-auto text-center">
-        <div className="card">
-          <div className="animate-spin w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-slate-400">Loading credentials...</p>
+      <div className="pt-24 pb-12 px-4 max-w-4xl mx-auto text-center">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <div className="animate-spin w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-gray-500">Loading credentials...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="pt-24 px-4 max-w-6xl mx-auto">
+    <div className="pt-24 pb-12 px-4 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold gradient-text mb-2">My Credentials</h1>
-          <p className="text-slate-400">Manage your verified credentials and certificates</p>
+          <h1 className="text-3xl font-display font-bold text-gray-900 mb-2">My Credentials</h1>
+          <p className="text-gray-500">Manage your verified credentials and certificates</p>
         </div>
         <button 
           onClick={() => setShowAddModal(true)}
-          className="btn-primary flex items-center gap-2"
+          className="bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl shadow-lg hover:from-violet-600 hover:to-purple-700 flex items-center gap-2 px-6 py-3 font-medium transition-all"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -268,44 +268,44 @@ export function Credentials({ onBack }: CredentialsProps) {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-400">Total Credentials</p>
-              <p className="text-2xl font-bold">{credentials.length}</p>
+              <p className="text-sm text-gray-500">Total Credentials</p>
+              <p className="text-2xl font-bold text-gray-900">{credentials.length}</p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
-              <svg className="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center">
+              <svg className="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-400">Valid</p>
-              <p className="text-2xl font-bold text-emerald-400">
+              <p className="text-sm text-gray-500">Valid</p>
+              <p className="text-2xl font-bold text-emerald-600">
                 {credentials.filter(c => c.status === 'valid').length}
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
-              <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
+              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-400">Expired</p>
-              <p className="text-2xl font-bold text-red-400">
+              <p className="text-sm text-gray-500">Expired</p>
+              <p className="text-2xl font-bold text-red-600">
                 {credentials.filter(c => c.status === 'expired').length}
               </p>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center">
-              <svg className="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+              <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -315,19 +315,19 @@ export function Credentials({ onBack }: CredentialsProps) {
 
       {/* Empty State */}
       {credentials.length === 0 && (
-        <div className="card text-center py-16">
-          <div className="w-20 h-20 rounded-full bg-slate-700/50 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 text-center py-16">
+          <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
-          <h3 className="text-xl font-semibold mb-2">No Credentials Yet</h3>
-          <p className="text-slate-400 mb-6 max-w-md mx-auto">
+          <h3 className="text-xl font-display font-semibold text-gray-900 mb-2">No Credentials Yet</h3>
+          <p className="text-gray-500 mb-6 max-w-md mx-auto">
             Start building your verified digital identity by adding your first credential.
           </p>
           <button 
             onClick={() => setShowAddModal(true)}
-            className="btn-primary inline-flex items-center gap-2"
+            className="bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl shadow-lg hover:from-violet-600 hover:to-purple-700 inline-flex items-center gap-2 px-6 py-3 font-medium transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -341,16 +341,16 @@ export function Credentials({ onBack }: CredentialsProps) {
       {credentials.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {credentials.map((credential) => (
-            <div key={credential.id} className="card hover:border-indigo-500/50 transition-colors">
+            <div key={credential.id} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:border-violet-300 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-indigo-400">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center text-violet-600">
                   {getCredentialIcon(credential.type)}
                 </div>
                 <div className="flex items-center gap-2">
                   {getStatusBadge(credential.status)}
                   <button
                     onClick={() => handleDeleteCredential(credential.id)}
-                    className="p-1 text-slate-500 hover:text-red-400 transition-colors"
+                    className="p-1 text-gray-400 hover:text-red-500 transition-colors"
                     title="Delete credential"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -360,26 +360,26 @@ export function Credentials({ onBack }: CredentialsProps) {
                 </div>
               </div>
               
-              <h3 className="font-semibold mb-1">{credential.type}</h3>
-              <p className="text-sm text-slate-400 mb-4">Issued by {credential.issuer}</p>
+              <h3 className="font-semibold text-gray-900 mb-1">{credential.type}</h3>
+              <p className="text-sm text-gray-500 mb-4">Issued by {credential.issuer}</p>
               
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-500">Issued</span>
-                <span className="text-slate-300">{formatTimestamp(credential.issuedAt)}</span>
+                <span className="text-gray-400">Issued</span>
+                <span className="text-gray-600">{formatTimestamp(credential.issuedAt)}</span>
               </div>
               
               {credential.expiresAt && (
                 <div className="flex items-center justify-between text-sm mt-2">
-                  <span className="text-slate-500">Expires</span>
-                  <span className={credential.status === 'expired' ? 'text-red-400' : 'text-slate-300'}>
+                  <span className="text-gray-400">Expires</span>
+                  <span className={credential.status === 'expired' ? 'text-red-500' : 'text-gray-600'}>
                     {formatTimestamp(credential.expiresAt)}
                   </span>
                 </div>
               )}
 
               {credential.ipfsHash && (
-                <div className="mt-4 pt-4 border-t border-slate-700">
-                  <p className="text-xs text-slate-500 truncate">
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <p className="text-xs text-gray-400 truncate">
                     IPFS: {credential.ipfsHash.replace('ipfs://', '').slice(0, 20)}...
                   </p>
                 </div>
@@ -390,14 +390,14 @@ export function Credentials({ onBack }: CredentialsProps) {
           {/* Add New Card */}
           <div 
             onClick={() => setShowAddModal(true)}
-            className="card border-dashed border-slate-600 hover:border-indigo-500 flex flex-col items-center justify-center py-12 cursor-pointer transition-colors"
+            className="bg-white rounded-2xl shadow-lg border-2 border-dashed border-gray-200 hover:border-violet-400 flex flex-col items-center justify-center py-12 cursor-pointer transition-colors p-6"
           >
-            <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
             </div>
-            <p className="text-slate-400">Add New Credential</p>
+            <p className="text-gray-500">Add New Credential</p>
           </div>
         </div>
       )}
@@ -405,12 +405,12 @@ export function Credentials({ onBack }: CredentialsProps) {
       {/* Add Modal */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="card max-w-md w-full mx-4">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 max-w-md w-full mx-4">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold">Add New Credential</h2>
+              <h2 className="text-xl font-display font-semibold text-gray-900">Add New Credential</h2>
               <button 
                 onClick={() => setShowAddModal(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-gray-400 hover:text-gray-600"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -420,11 +420,11 @@ export function Credentials({ onBack }: CredentialsProps) {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Credential Type *</label>
+                <label className="block text-sm text-gray-700 mb-2">Credential Type *</label>
                 <select
                   value={newCredential.type}
                   onChange={(e) => setNewCredential(prev => ({ ...prev, type: e.target.value }))}
-                  className="input-field"
+                  className="bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:ring-violet-500 focus:border-violet-500 w-full px-4 py-3"
                 >
                   <option value="">Select type...</option>
                   <option value="University Degree">University Degree</option>
@@ -437,29 +437,29 @@ export function Credentials({ onBack }: CredentialsProps) {
               </div>
 
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Issuer *</label>
+                <label className="block text-sm text-gray-700 mb-2">Issuer *</label>
                 <input
                   type="text"
                   placeholder="e.g., MIT, Google, etc."
                   value={newCredential.issuer}
                   onChange={(e) => setNewCredential(prev => ({ ...prev, issuer: e.target.value }))}
-                  className="input-field"
+                  className="bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:ring-violet-500 focus:border-violet-500 w-full px-4 py-3"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Expiry Date (Optional)</label>
+                <label className="block text-sm text-gray-700 mb-2">Expiry Date (Optional)</label>
                 <input
                   type="date"
                   value={newCredential.expiresAt}
                   onChange={(e) => setNewCredential(prev => ({ ...prev, expiresAt: e.target.value }))}
-                  className="input-field"
+                  className="bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:ring-violet-500 focus:border-violet-500 w-full px-4 py-3"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-slate-400 mb-2">Document (Optional)</label>
-                <div className="border-2 border-dashed border-slate-600 rounded-xl p-6 text-center">
+                <label className="block text-sm text-gray-700 mb-2">Document (Optional)</label>
+                <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-violet-400 transition-colors">
                   <input
                     type="file"
                     id="document"
@@ -469,22 +469,22 @@ export function Credentials({ onBack }: CredentialsProps) {
                   />
                   <label htmlFor="document" className="cursor-pointer">
                     {newCredential.document ? (
-                      <div className="text-emerald-400">
+                      <div className="text-emerald-600">
                         <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <p className="font-medium">{newCredential.document.name}</p>
-                        <p className="text-xs text-slate-400 mt-1">
+                        <p className="text-xs text-gray-500 mt-1">
                           {(newCredential.document.size / 1024).toFixed(1)} KB
                         </p>
                       </div>
                     ) : (
                       <>
-                        <svg className="w-8 h-8 mx-auto text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-8 h-8 mx-auto text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
-                        <p className="text-slate-400">Click to upload or drag and drop</p>
-                        <p className="text-xs text-slate-500 mt-1">PDF, PNG, JPG up to 10MB</p>
+                        <p className="text-gray-500">Click to upload or drag and drop</p>
+                        <p className="text-xs text-gray-400 mt-1">PDF, PNG, JPG up to 10MB</p>
                       </>
                     )}
                   </label>
@@ -495,14 +495,14 @@ export function Credentials({ onBack }: CredentialsProps) {
             <div className="flex gap-4 mt-6">
               <button
                 onClick={() => setShowAddModal(false)}
-                className="btn-secondary flex-1"
+                className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl px-6 py-3 font-medium transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddCredential}
                 disabled={isUploading || !newCredential.type || !newCredential.issuer}
-                className="btn-primary flex-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl shadow-lg hover:from-violet-600 hover:to-purple-700 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 font-medium transition-all"
               >
                 {isUploading ? (
                   <>

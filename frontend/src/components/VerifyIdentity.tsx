@@ -92,35 +92,35 @@ export function VerifyIdentity() {
   };
 
   const getTrustLevel = (score: number) => {
-    if (score >= 80) return { label: 'Elite', class: 'text-indigo-400', bg: 'bg-indigo-500/20' };
-    if (score >= 60) return { label: 'High', class: 'text-emerald-400', bg: 'bg-emerald-500/20' };
-    if (score >= 40) return { label: 'Medium', class: 'text-yellow-400', bg: 'bg-yellow-500/20' };
-    return { label: 'Low', class: 'text-red-400', bg: 'bg-red-500/20' };
+    if (score >= 80) return { label: 'Elite', class: 'text-violet-600', bg: 'bg-violet-100' };
+    if (score >= 60) return { label: 'High', class: 'text-emerald-600', bg: 'bg-emerald-100' };
+    if (score >= 40) return { label: 'Medium', class: 'text-yellow-600', bg: 'bg-yellow-100' };
+    return { label: 'Low', class: 'text-red-600', bg: 'bg-red-100' };
   };
 
   return (
-    <div className="pt-24 px-4 max-w-4xl mx-auto">
+    <div className="pt-24 pb-12 px-4 max-w-4xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold gradient-text mb-4">Verify Identity</h1>
-        <p className="text-slate-400">
+        <h1 className="text-4xl font-display font-bold text-gray-900 mb-4">Verify Identity</h1>
+        <p className="text-gray-500">
           Verify any Ethereum address to check their VeriChain identity and trust score
         </p>
       </div>
 
       {/* Search Box */}
-      <div className="card mb-8">
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 mb-8">
         <div className="flex flex-col sm:flex-row gap-4">
           <input
             type="text"
             placeholder="Enter Ethereum address (0x...)"
             value={addressToVerify}
             onChange={(e) => setAddressToVerify(e.target.value)}
-            className="input-field flex-1 font-mono text-sm"
+            className="bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:ring-violet-500 focus:border-violet-500 flex-1 font-mono text-sm px-4 py-3"
           />
           <button
             onClick={handleVerify}
             disabled={isLoading || !isConnected}
-            className="btn-primary flex items-center justify-center gap-2 min-w-[140px]"
+            className="bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-xl shadow-lg hover:from-violet-600 hover:to-purple-700 flex items-center justify-center gap-2 min-w-[140px] px-6 py-3 font-medium transition-all disabled:opacity-50"
           >
             {isLoading ? (
               <>
@@ -142,7 +142,7 @@ export function VerifyIdentity() {
         </div>
         
         {!isConnected && (
-          <p className="text-sm text-yellow-400 mt-4">
+          <p className="text-sm text-yellow-600 mt-4">
             ⚠️ Please connect your wallet to verify identities
           </p>
         )}
@@ -150,11 +150,11 @@ export function VerifyIdentity() {
 
       {/* Result */}
       {result && (
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           {result.exists ? (
             <>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold">Identity Found</h2>
+                <h2 className="text-xl font-display font-semibold text-gray-900">Identity Found</h2>
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${getTrustLevel(result.trustScore).bg} ${getTrustLevel(result.trustScore).class}`}>
                   {getTrustLevel(result.trustScore).label} Trust
                 </span>
@@ -162,29 +162,29 @@ export function VerifyIdentity() {
 
               <div className="space-y-4">
                 {/* Address */}
-                <div className="flex items-center justify-between py-3 border-b border-slate-700">
-                  <span className="text-slate-400">Address</span>
-                  <span className="font-mono text-sm">{formatAddress(addressToVerify)}</span>
+                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-500">Address</span>
+                  <span className="font-mono text-sm text-gray-900">{formatAddress(addressToVerify)}</span>
                 </div>
 
                 {/* DID */}
-                <div className="flex items-center justify-between py-3 border-b border-slate-700">
-                  <span className="text-slate-400">DID</span>
-                  <span className="font-mono text-sm truncate max-w-[200px]">{result.did}</span>
+                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-500">DID</span>
+                  <span className="font-mono text-sm truncate max-w-[200px] text-gray-900">{result.did}</span>
                 </div>
 
                 {/* Trust Score */}
-                <div className="py-3 border-b border-slate-700">
+                <div className="py-3 border-b border-gray-200">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-400">Trust Score</span>
+                    <span className="text-gray-500">Trust Score</span>
                     <span className={`font-bold ${getTrustLevel(result.trustScore).class}`}>
                       {result.trustScore}/100
                     </span>
                   </div>
-                  <div className="w-full bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-gray-200 rounded-full h-2">
                     <div 
                       className={`h-2 rounded-full ${
-                        result.trustScore >= 80 ? 'bg-indigo-500' :
+                        result.trustScore >= 80 ? 'bg-violet-500' :
                         result.trustScore >= 60 ? 'bg-emerald-500' :
                         result.trustScore >= 40 ? 'bg-yellow-500' : 'bg-red-500'
                       }`}
@@ -194,9 +194,9 @@ export function VerifyIdentity() {
                 </div>
 
                 {/* Verified Status */}
-                <div className="flex items-center justify-between py-3 border-b border-slate-700">
-                  <span className="text-slate-400">Verified</span>
-                  <span className={`flex items-center gap-2 ${result.verified ? 'text-emerald-400' : 'text-slate-500'}`}>
+                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-500">Verified</span>
+                  <span className={`flex items-center gap-2 ${result.verified ? 'text-emerald-600' : 'text-gray-400'}`}>
                     {result.verified ? (
                       <>
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -216,15 +216,15 @@ export function VerifyIdentity() {
                 </div>
 
                 {/* Created At */}
-                <div className="flex items-center justify-between py-3 border-b border-slate-700">
-                  <span className="text-slate-400">Created</span>
-                  <span>{formatTimestamp(result.createdAt)}</span>
+                <div className="flex items-center justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-500">Created</span>
+                  <span className="text-gray-900">{formatTimestamp(result.createdAt)}</span>
                 </div>
 
                 {/* Verification Count */}
                 <div className="flex items-center justify-between py-3">
-                  <span className="text-slate-400">Times Verified</span>
-                  <span className="font-semibold">{result.verificationCount}</span>
+                  <span className="text-gray-500">Times Verified</span>
+                  <span className="font-semibold text-gray-900">{result.verificationCount}</span>
                 </div>
               </div>
 
@@ -234,7 +234,7 @@ export function VerifyIdentity() {
                   href={`https://testnet.qie.digital/address/${addressToVerify}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary flex-1 flex items-center justify-center gap-2"
+                  className="flex-1 flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl px-6 py-3 font-medium transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -245,13 +245,13 @@ export function VerifyIdentity() {
             </>
           ) : (
             <div className="text-center py-8">
-              <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">No Identity Found</h3>
-              <p className="text-slate-400">
+              <h3 className="text-xl font-display font-semibold text-gray-900 mb-2">No Identity Found</h3>
+              <p className="text-gray-500">
                 This address has not created a VeriChain identity yet.
               </p>
             </div>
@@ -261,16 +261,16 @@ export function VerifyIdentity() {
 
       {/* Help Section */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+              <svg className="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div>
-              <h4 className="font-semibold mb-1">What is Trust Score?</h4>
-              <p className="text-sm text-slate-400">
+              <h4 className="font-semibold text-gray-900 mb-1">What is Trust Score?</h4>
+              <p className="text-sm text-gray-500">
                 Trust Score is calculated using oracle data (40%), on-chain activity (30%), 
                 reputation (20%), and consistency (10%). Higher scores indicate more trustworthy identities.
               </p>
@@ -278,16 +278,16 @@ export function VerifyIdentity() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-              <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
+              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
             <div>
-              <h4 className="font-semibold mb-1">Zero-Knowledge Verification</h4>
-              <p className="text-sm text-slate-400">
+              <h4 className="font-semibold text-gray-900 mb-1">Zero-Knowledge Verification</h4>
+              <p className="text-sm text-gray-500">
                 VeriChain uses ZK proofs to verify credentials without exposing sensitive data. 
                 You can prove attributes without revealing the actual information.
               </p>

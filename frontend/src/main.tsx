@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
+import './styles/theme.css'
 import './index.css'
 import App from './App.tsx'
 
@@ -12,20 +13,21 @@ createRoot(document.getElementById('root')!).render(
       toastOptions={{
         duration: 4000,
         style: {
-          background: '#1e293b',
-          color: '#f1f5f9',
-          border: '1px solid #334155',
+          background: '#ffffff',
+          color: '#0f172a',
+          border: '1px solid #e2e8f0',
+          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
         },
         success: {
           iconTheme: {
             primary: '#10b981',
-            secondary: '#f1f5f9',
+            secondary: '#ffffff',
           },
         },
         error: {
           iconTheme: {
             primary: '#ef4444',
-            secondary: '#f1f5f9',
+            secondary: '#ffffff',
           },
         },
       }}

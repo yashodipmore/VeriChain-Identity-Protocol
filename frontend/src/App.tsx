@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Header, Hero, Dashboard, CreateIdentity, VerifyIdentity, Credentials, ZKProofGenerator } from './components';
+import { Header, LandingPage, Dashboard, CreateIdentity, VerifyIdentity, Credentials, ZKProofGenerator } from './components';
 import { useWalletStore } from './store/walletStore';
 
 type Page = 'home' | 'dashboard' | 'create' | 'verify' | 'credentials' | 'zkproof';
@@ -22,15 +22,19 @@ function App() {
         return <ZKProofGenerator onBack={() => setCurrentPage('dashboard')} />;
       default:
         return (
-          <Hero 
+          <LandingPage 
             onGetStarted={() => setCurrentPage(isConnected ? 'create' : 'home')} 
           />
         );
     }
   };
 
+  // Determine theme based on page
+  const isLandingPage = currentPage === 'home';
+  const themeClass = isLandingPage ? 'theme-orange' : 'theme-violet';
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-900">
+    <div className={`min-h-screen ${themeClass}`} style={{ backgroundColor: isLandingPage ? '#FFFFFF' : '#F9FAFB' }}>
       <Header 
         currentPage={currentPage} 
         onNavigate={setCurrentPage} 
@@ -40,12 +44,12 @@ function App() {
       </main>
       
       {/* Footer */}
-      <footer className="bg-primary-900/50 border-t border-primary-700 py-8 mt-16">
+      <footer className="bg-gray-900 py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold text-white mb-4">
-                <span className="text-accent-400">Veri</span>Chain
+              <h3 className="text-xl font-display font-bold text-white mb-4">
+                <span className="text-orange-400">Veri</span>Chain
               </h3>
               <p className="text-gray-400 text-sm">
                 Decentralized Identity Verification on QIE Blockchain. 
@@ -59,7 +63,7 @@ function App() {
                 <li>
                   <button 
                     onClick={() => setCurrentPage('home')}
-                    className="text-gray-400 hover:text-accent-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     Home
                   </button>
@@ -67,7 +71,7 @@ function App() {
                 <li>
                   <button 
                     onClick={() => setCurrentPage('dashboard')}
-                    className="text-gray-400 hover:text-accent-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     Dashboard
                   </button>
@@ -77,7 +81,7 @@ function App() {
                     href="https://testnet.qie.digital/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-accent-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     QIE Explorer
                   </a>
@@ -93,7 +97,7 @@ function App() {
                     href="https://github.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-accent-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     GitHub Repository
                   </a>
@@ -103,18 +107,29 @@ function App() {
                     href="https://docs.qie.digital/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-accent-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-400 transition-colors"
                   >
                     QIE Documentation
                   </a>
                 </li>
               </ul>
             </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Team</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="text-gray-400">Yashodip More</li>
+                <li className="text-gray-400">Komal Kumavat</li>
+              </ul>
+            </div>
           </div>
           
-          <div className="border-t border-primary-700 mt-8 pt-6 text-center">
-            <p className="text-gray-500 text-sm">
-              © 2025 VeriChain. Built for QIE Blockchain Hackathon.
+          <div className="border-t border-gray-700 mt-8 pt-6 text-center">
+            <p className="text-gray-400 text-sm font-medium">
+              © 2025 VeriChain. Built with ❤️ for QIE Blockchain Hackathon.
+            </p>
+            <p className="text-gray-500 text-xs mt-2">
+              Powered by QIE Blockchain | Decentralized Identity Protocol
             </p>
           </div>
         </div>
