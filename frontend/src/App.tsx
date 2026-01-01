@@ -96,7 +96,7 @@ function App() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/yashodipmore/VeriChain-Identity-Protocol" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-orange-400 transition-colors"
