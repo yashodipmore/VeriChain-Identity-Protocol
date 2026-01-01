@@ -1,0 +1,23 @@
+{
+  "name": "verichain",
+  "version": "1.0.0",
+  "description": "VeriChain - Decentralized Identity Protocol on QIE Blockchain",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network qieTestnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network qieMainnet",
+    "clean": "hardhat clean"
+  },
+  "keywords": ["blockchain", "identity", "did", "qie", "web3"],
+  "author": "VeriChain Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.22.0"
+  }
+}

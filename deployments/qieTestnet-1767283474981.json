@@ -1,0 +1,12 @@
+{
+  "network": "qieTestnet",
+  "chainId": "1983",
+  "deployer": "0xD455a9bc95b1cA52Fa16412C581CE8383EdA1625",
+  "timestamp": "2026-01-01T16:04:34.981Z",
+  "contracts": {
+    "IdentityRegistry": "0x33b9eb7320c2ACE82caDBA8F61eAB5D72E8282C6",
+    "OracleAdapter": "0x32376c7aABa1c6F9d802Ede04d7e106d113e275B",
+    "TrustScoreCalculator": "0xEb0a50DEAb93c92730E1429Fb2A82B431C54b48A",
+    "ZKVerifier": "0x056cbf01E11105858005E6aB43076a41387D164C"
+  }
+}

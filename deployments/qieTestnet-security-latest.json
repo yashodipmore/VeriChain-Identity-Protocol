@@ -1,0 +1,21 @@
+{
+  "network": "qieTestnet",
+  "chainId": "1983",
+  "deployer": "0xD455a9bc95b1cA52Fa16412C581CE8383EdA1625",
+  "timestamp": "2026-01-01T18:45:25.043Z",
+  "type": "security",
+  "contracts": {
+    "MultiSigAdmin": "0x6668fF8D75209B51D2D292ceF5A688F77142cb6C",
+    "RateLimiter": "0xA9b1Ff4B906F11629fAcB9183cd8b201A8f452c8",
+    "CrossChainReputation": "0xF7fD38Bf7EFDFA33b7fa368b9A87d76c92f38389"
+  },
+  "config": {
+    "multiSig": {
+      "admins": [
+        "0xD455a9bc95b1cA52Fa16412C581CE8383EdA1625"
+      ],
+      "requiredApprovals": 1,
+      "timeLockDelay": 3600
+    }
+  }
+}
