@@ -9,106 +9,193 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
   return (
     <div className="theme-orange">
-      {/* Hero Section */}
+      {/* Hero Section - Professional Asymmetric Layout */}
       <section className="relative min-h-screen bg-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-pattern opacity-50"></div>
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(249,115,22,0.08),transparent)]"></div>
         
-        {/* Orange Gradient Blob */}
-        <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-orange-100 via-orange-50 to-transparent rounded-full blur-3xl opacity-60"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-orange-100 to-transparent rounded-full blur-3xl opacity-40"></div>
-        
-        <div className="relative container mx-auto px-6 pt-32 pb-20">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-5 py-2.5 mb-8">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              <span className="text-sm font-medium text-orange-700">Built on QIE Blockchain</span>
+        {/* Main Hero Grid - Split Layout */}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-12 pt-28 lg:pt-36 pb-20">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[calc(100vh-10rem)]">
+            
+            {/* Left Side - Content (7 cols) */}
+            <div className="lg:col-span-7 space-y-8">
+              {/* Small Badge - Left aligned */}
+              <div className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-2 animate-fadeInUp opacity-0" style={{animationDelay: '0.1s', animationFillMode: 'forwards'}}>
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                <span className="text-xs font-medium text-orange-700 uppercase tracking-wider">Built on QIE Blockchain</span>
+              </div>
+
+              {/* Main Heading - Left aligned, more impactful */}
+              <div className="space-y-4 animate-fadeInUp opacity-0" style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}>
+                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-[1.05] tracking-tight">
+                  Decentralized
+                  <br />
+                  <span className="text-gradient-orange">Identity</span> Protocol
+                </h1>
+                <p className="text-xl text-gray-500 max-w-xl leading-relaxed">
+                  The first identity system with <span className="text-gray-900 font-medium">Proof-of-Real-World-Stake</span>. 
+                  Verify credentials with zero-knowledge proofs on QIE Blockchain.
+                </p>
+              </div>
+
+              {/* CTA Buttons - Left aligned, stacked on mobile */}
+              <div className="flex flex-wrap gap-4 animate-fadeInUp opacity-0" style={{animationDelay: '0.4s', animationFillMode: 'forwards'}}>
+                {!isConnected ? (
+                  <button
+                    onClick={connect}
+                    disabled={isConnecting}
+                    className="group bg-gray-900 text-white font-medium px-8 py-4 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-all duration-300"
+                  >
+                    {isConnecting ? (
+                      <>
+                        <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>Connecting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Connect Wallet</span>
+                        <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={onGetStarted}
+                    className="group bg-gray-900 text-white font-medium px-8 py-4 rounded-xl flex items-center gap-3 hover:bg-gray-800 transition-all duration-300"
+                  >
+                    <span>Go to Dashboard</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                )}
+                
+                <a 
+                  href="#features" 
+                  className="text-gray-600 font-medium px-6 py-4 flex items-center gap-2 hover:text-gray-900 transition-colors duration-300"
+                >
+                  <span>Learn how it works</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Stats Row - Horizontal, Left aligned */}
+              <div className="flex flex-wrap gap-8 pt-8 border-t border-gray-100 animate-fadeInUp opacity-0" style={{animationDelay: '0.6s', animationFillMode: 'forwards'}}>
+                {[
+                  { value: '25K+', label: 'TPS' },
+                  { value: '7', label: 'Oracles' },
+                  { value: '<3s', label: 'Finality' },
+                  { value: 'Free', label: 'Access' },
+                ].map((stat, index) => (
+                  <div key={index} className="text-left">
+                    <div className="text-2xl font-bold text-gray-900 font-display">{stat.value}</div>
+                    <div className="text-sm text-gray-500">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="font-display heading-xl text-gray-900 mb-6">
-              <span className="text-gradient-orange">Trust</span> Without Borders
-              <br />
-              <span className="text-gray-600 text-4xl md:text-5xl font-semibold">Privacy Without Compromise</span>
-            </h1>
+            {/* Right Side - Visual Element (5 cols) */}
+            <div className="lg:col-span-5 relative animate-fadeInRight opacity-0" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
+              {/* Abstract Visual - Professional 3D-like card stack */}
+              <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
+                {/* Background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-60 scale-110"></div>
+                
+                {/* Main Card */}
+                <div className="relative bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100">
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <div className="font-bold text-gray-900">VeriChain DID</div>
+                        <div className="text-sm text-gray-500">Verified Identity</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-medium px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                      Verified
+                    </div>
+                  </div>
 
-            {/* Subtitle */}
-            <p className="body-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-              VeriChain is a revolutionary <strong className="text-gray-900">Decentralized Identity (DID)</strong> verification 
-              system that leverages QIE's free oracle infrastructure to create the world's first 
-              <span className="text-orange-600 font-semibold"> Proof-of-Real-World-Stake </span>
-              identity protocol.
-            </p>
+                  {/* Credential Visual */}
+                  <div className="space-y-4">
+                    <div className="h-3 bg-gray-100 rounded-full w-3/4"></div>
+                    <div className="h-3 bg-gray-100 rounded-full w-1/2"></div>
+                    <div className="h-3 bg-gray-100 rounded-full w-2/3"></div>
+                  </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              {!isConnected ? (
-                <button
-                  onClick={connect}
-                  disabled={isConnecting}
-                  className="btn-primary text-lg px-10 py-4 flex items-center gap-3"
-                >
-                  {isConnecting ? (
-                    <>
-                      <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  {/* Trust Score */}
+                  <div className="mt-8 pt-6 border-t border-gray-100">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-gray-600">Trust Score</span>
+                      <span className="text-lg font-bold text-gray-900">92/100</span>
+                    </div>
+                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full w-[92%] bg-gradient-to-r from-orange-400 to-orange-500 rounded-full"></div>
+                    </div>
+                  </div>
+
+                  {/* ZK Badge */}
+                  <div className="mt-6 flex items-center gap-3 bg-violet-50 rounded-xl p-4">
+                    <div className="w-10 h-10 bg-violet-500 rounded-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
-                      <span>Connecting...</span>
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                      <span>Get Started</span>
-                    </>
-                  )}
-                </button>
-              ) : (
-                <button 
-                  onClick={onGetStarted}
-                  className="btn-primary text-lg px-10 py-4"
-                >
-                  Go to Dashboard
-                </button>
-              )}
-              
-              <a 
-                href="#features" 
-                className="btn-secondary text-lg px-8 py-4 flex items-center gap-2"
-              >
-                <span>Learn More</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-              {[
-                { value: '25K+', label: 'TPS Speed', icon: '⚡' },
-                { value: '7', label: 'Live Oracles', icon: '🔗' },
-                { value: '3s', label: 'Finality', icon: '⏱️' },
-                { value: 'FREE', label: 'Oracle Access', icon: '🎁' },
-              ].map((stat, index) => (
-                <div key={index} className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="text-3xl font-bold text-gray-900 font-display">{stat.value}</div>
-                  <div className="text-sm text-gray-500 font-medium mt-1">{stat.label}</div>
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">Zero-Knowledge Proof</div>
+                      <div className="text-xs text-gray-500">Age verified without revealing DOB</div>
+                    </div>
+                  </div>
                 </div>
-              ))}
+
+                {/* Floating badges */}
+                <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-medium text-gray-700">Oracle Live</span>
+                  </div>
+                </div>
+
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-3 border border-gray-100 animate-float" style={{animationDelay: '1s'}}>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-xs font-medium text-gray-700">On-Chain</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Problem Statement Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display heading-lg text-gray-900 mb-4">
+            <h2 className="font-display heading-lg text-gray-900 mb-5">
               The Problem We're <span className="text-gradient-orange">Solving</span>
             </h2>
             <p className="body-lg text-gray-600">
@@ -148,8 +235,11 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 description: 'No standardized way to verify credentials across platforms, leading to fraud and identity theft.'
               }
             ].map((item, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-orange-200 transition-colors">
-                <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-5">
+              <div 
+                key={index} 
+                className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-orange-300 hover-lift transition-all duration-500"
+              >
+                <div className="w-16 h-16 bg-orange-50 border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 mb-6">
                   {item.icon}
                 </div>
                 <h3 className="heading-sm text-gray-900 mb-3">{item.title}</h3>
@@ -161,10 +251,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display heading-lg text-gray-900 mb-4">
+            <h2 className="font-display heading-lg text-gray-900 mb-5">
               Our <span className="text-gradient-orange">Solution</span>
             </h2>
             <p className="body-lg text-gray-600">
@@ -172,7 +262,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               {
                 icon: (
@@ -181,8 +271,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'Zero-Knowledge Proofs',
-                description: 'Prove credentials without revealing sensitive data. Verify age without showing your birthdate.',
-                color: 'orange'
+                description: 'Prove credentials without revealing sensitive data. Verify age without showing your birthdate.'
               },
               {
                 icon: (
@@ -191,8 +280,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'Dynamic Trust Scores',
-                description: 'Real-time trust scores based on oracle data, on-chain activity, and cross-chain reputation.',
-                color: 'orange'
+                description: 'Real-time trust scores based on oracle data, on-chain activity, and cross-chain reputation.'
               },
               {
                 icon: (
@@ -201,8 +289,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'Decentralized Storage',
-                description: 'Encrypted credentials stored on IPFS. Only you control access with your private keys.',
-                color: 'orange'
+                description: 'Encrypted credentials stored on IPFS. Only you control access with your private keys.'
               },
               {
                 icon: (
@@ -211,8 +298,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'QIE Oracle Integration',
-                description: 'Free access to 7+ real-world data feeds for accurate verification and scoring.',
-                color: 'orange'
+                description: 'Free access to 7+ real-world data feeds for accurate verification and scoring.'
               },
               {
                 icon: (
@@ -221,8 +307,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'AES-256 Encryption',
-                description: 'Military-grade encryption with PBKDF2 key derivation protects your personal data.',
-                color: 'orange'
+                description: 'Military-grade encryption with PBKDF2 key derivation protects your personal data.'
               },
               {
                 icon: (
@@ -231,12 +316,14 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                   </svg>
                 ),
                 title: 'Multi-Sig Governance',
-                description: 'Decentralized admin controls with time-locked operations for maximum security.',
-                color: 'orange'
+                description: 'Decentralized admin controls with time-locked operations for maximum security.'
               }
             ].map((feature, index) => (
-              <div key={index} className="group bg-white border border-gray-200 rounded-2xl p-7 hover:border-orange-300 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-600 mb-5 group-hover:bg-orange-100 transition-colors">
+              <div 
+                key={index} 
+                className="group bg-white border border-gray-200 rounded-2xl p-7 hover:border-orange-300 hover-lift transition-all duration-500"
+              >
+                <div className="w-14 h-14 bg-orange-50 border border-orange-200 rounded-xl flex items-center justify-center text-orange-600 mb-5 group-hover:bg-orange-100 group-hover:border-orange-300 transition-all duration-500">
                   {feature.icon}
                 </div>
                 <h3 className="heading-sm text-gray-900 mb-2">{feature.title}</h3>
@@ -248,10 +335,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Technology Stack Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display heading-lg text-gray-900 mb-4">
+            <h2 className="font-display heading-lg text-gray-900 mb-5">
               Technology <span className="text-gradient-orange">Stack</span>
             </h2>
             <p className="body-lg text-gray-600">
@@ -259,24 +346,27 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {[
-              { name: 'Solidity', icon: '📜' },
-              { name: 'React', icon: '⚛️' },
-              { name: 'TypeScript', icon: '🔷' },
-              { name: 'ethers.js', icon: '🔗' },
-              { name: 'Hardhat', icon: '👷' },
-              { name: 'IPFS', icon: '📦' },
-              { name: 'Circom', icon: '🔐' },
-              { name: 'Tailwind', icon: '🎨' },
-              { name: 'Vite', icon: '⚡' },
-              { name: 'Zustand', icon: '🐻' },
-              { name: 'OpenZeppelin', icon: '🛡️' },
-              { name: 'QIE Oracle', icon: '🔮' },
+              { name: 'Solidity', desc: 'Smart Contracts' },
+              { name: 'React 19', desc: 'UI Framework' },
+              { name: 'TypeScript', desc: 'Type Safety' },
+              { name: 'ethers.js', desc: 'Blockchain SDK' },
+              { name: 'Hardhat', desc: 'Dev Framework' },
+              { name: 'IPFS', desc: 'Storage Layer' },
+              { name: 'Circom', desc: 'ZK Circuits' },
+              { name: 'Tailwind', desc: 'CSS Framework' },
+              { name: 'Vite', desc: 'Build Tool' },
+              { name: 'Zustand', desc: 'State Mgmt' },
+              { name: 'OpenZeppelin', desc: 'Security' },
+              { name: 'QIE Oracle', desc: 'Data Feeds' },
             ].map((tech, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-orange-200 hover:shadow-md transition-all">
-                <div className="text-2xl mb-2">{tech.icon}</div>
-                <div className="text-sm font-medium text-gray-700">{tech.name}</div>
+              <div 
+                key={index} 
+                className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:border-orange-300 hover-lift transition-all duration-500"
+              >
+                <div className="text-base font-bold text-gray-900 mb-1">{tech.name}</div>
+                <div className="text-xs text-gray-500 font-medium">{tech.desc}</div>
               </div>
             ))}
           </div>
@@ -284,10 +374,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Smart Contracts Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display heading-lg text-gray-900 mb-4">
+            <h2 className="font-display heading-lg text-gray-900 mb-5">
               Deployed <span className="text-gradient-orange">Smart Contracts</span>
             </h2>
             <p className="body-lg text-gray-600">
@@ -295,7 +385,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
               { name: 'IdentityRegistry', address: '0x33b9...C6', desc: 'Core DID storage' },
               { name: 'OracleAdapter', address: '0x3237...5B', desc: 'QIE Oracle integration' },
@@ -304,12 +394,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               { name: 'MultiSigAdmin', address: '0x6668...6C', desc: 'Governance' },
               { name: 'RateLimiter', address: '0xA9b1...c8', desc: 'Anti-spam protection' },
             ].map((contract, index) => (
-              <div key={index} className="bg-gray-50 border border-gray-200 rounded-xl p-5 hover:border-orange-200 transition-colors">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-semibold text-gray-900">{contract.name}</h4>
-                  <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">Live</span>
+              <div 
+                key={index} 
+                className="bg-gray-50 border border-gray-200 rounded-xl p-6 hover:border-orange-300 hover-lift transition-all duration-500"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-bold text-gray-900">{contract.name}</h4>
+                  <span className="text-xs bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-semibold border border-green-200">Live</span>
                 </div>
-                <code className="text-xs text-orange-600 font-mono">{contract.address}</code>
+                <code className="text-sm text-orange-600 font-mono font-medium">{contract.address}</code>
                 <p className="text-sm text-gray-500 mt-2">{contract.desc}</p>
               </div>
             ))}
@@ -318,10 +411,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-display heading-lg text-gray-900 mb-4">
+            <h2 className="font-display heading-lg text-gray-900 mb-5">
               Meet the <span className="text-gradient-orange">Team</span>
             </h2>
             <p className="body-lg text-gray-600">
@@ -329,7 +422,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8 max-w-3xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-3xl mx-auto">
             {[
               { 
                 name: 'Yashodip More', 
@@ -342,12 +435,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 desc: 'Research • Testing • Documentation'
               }
             ].map((member, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 text-center hover:border-orange-200 hover:shadow-lg transition-all flex-1 max-w-sm">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-5">
+              <div 
+                key={index} 
+                className="bg-white border border-gray-200 rounded-2xl p-10 text-center hover:border-orange-300 hover-lift transition-all duration-500 flex-1"
+              >
+                <div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6 shadow-lg border-4 border-white ring-1 ring-orange-200">
                   {member.name.charAt(0)}
                 </div>
-                <h3 className="heading-sm text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-orange-600 font-medium text-sm mb-3">{member.role}</p>
+                <h3 className="heading-sm text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-orange-600 font-semibold text-sm mb-3">{member.role}</p>
                 <p className="body-sm text-gray-500">{member.desc}</p>
               </div>
             ))}
@@ -356,17 +452,24 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-500 to-orange-600">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="font-display heading-lg text-white mb-4">
+      <section className="py-24 bg-gradient-to-br from-orange-500 to-orange-600 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 left-10 w-40 h-40 border border-white/15 rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-60 h-60 border border-white/15 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-20 h-20 border border-white/10 rounded-full"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 text-center relative">
+          <h2 className="font-display heading-lg text-white mb-5">
             Ready to Build Your Digital Identity?
           </h2>
-          <p className="text-orange-100 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-orange-100 text-lg mb-10 max-w-2xl mx-auto">
             Join the future of decentralized identity verification on QIE Blockchain.
           </p>
           <button 
             onClick={isConnected ? onGetStarted : connect}
-            className="bg-white text-orange-600 font-semibold px-10 py-4 rounded-xl hover:bg-orange-50 transition-colors text-lg shadow-lg"
+            className="bg-white text-orange-600 font-semibold px-14 py-5 rounded-2xl hover:bg-orange-50 transition-all duration-500 text-lg shadow-lg border border-white/80 hover-lift"
           >
             {isConnected ? 'Go to Dashboard' : 'Connect Wallet & Start'}
           </button>
@@ -374,36 +477,47 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-12">
+      <footer className="bg-gray-900 text-gray-400 py-16">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center border border-orange-500/30 shadow-md">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <span className="text-white font-semibold text-lg">VeriChain</span>
+              <span className="text-white font-bold text-xl">VeriChain</span>
             </div>
             
-            <div className="text-sm">
+            <div className="text-sm font-semibold">
               Built for QIE Blockchain Hackathon 2025
             </div>
             
-            <div className="flex items-center gap-6">
-              <a href="https://github.com/yashodipmore/VeriChain-Identity-Protocol" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+            <div className="flex items-center gap-8">
+              <a 
+                href="https://github.com/yashodipmore/VeriChain-Identity-Protocol" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-white transition-colors flex items-center gap-2"
+              >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
                 </svg>
+                <span className="text-sm font-medium">GitHub</span>
               </a>
-              <a href="https://testnet.qie.digital" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm">
+              <a 
+                href="https://testnet.qie.digital" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-white transition-colors text-sm font-medium"
+              >
                 QIE Explorer
               </a>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-            © 2025 VeriChain. Built with ❤️ by Yashodip More & Komal Kumavat
+          <div className="border-t border-gray-800 mt-10 pt-10 text-center text-sm font-medium">
+            © 2025 VeriChain. Built with passion by Yashodip More & Komal Kumavat
           </div>
         </div>
       </footer>

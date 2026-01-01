@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Header, LandingPage, Dashboard, CreateIdentity, VerifyIdentity, Credentials, ZKProofGenerator } from './components';
+import { Header, LandingPage, Dashboard, CreateIdentity, VerifyIdentity, Credentials, ZKProofGenerator, HelpDocs } from './components';
 import { useWalletStore } from './store/walletStore';
 
-type Page = 'home' | 'dashboard' | 'create' | 'verify' | 'credentials' | 'zkproof';
+type Page = 'home' | 'dashboard' | 'create' | 'verify' | 'credentials' | 'zkproof' | 'help';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -20,6 +20,8 @@ function App() {
         return <Credentials onBack={() => setCurrentPage('create')} />;
       case 'zkproof':
         return <ZKProofGenerator onBack={() => setCurrentPage('dashboard')} />;
+      case 'help':
+        return <HelpDocs />;
       default:
         return (
           <LandingPage 

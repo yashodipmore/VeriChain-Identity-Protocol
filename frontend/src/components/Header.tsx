@@ -2,7 +2,7 @@ import { useWalletStore } from '../store/walletStore';
 import { formatAddress } from '../utils/helpers';
 import { QIE_TESTNET } from '../config/constants';
 
-type Page = 'home' | 'dashboard' | 'create' | 'verify' | 'credentials' | 'zkproof';
+type Page = 'home' | 'dashboard' | 'create' | 'verify' | 'credentials' | 'zkproof' | 'help';
 
 interface HeaderProps {
   currentPage: Page;
@@ -65,6 +65,14 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 : 'text-gray-600 hover:text-gray-900'}`}
             >
               Verify
+            </button>
+            <button 
+              onClick={() => onNavigate('help')}
+              className={`font-medium transition-colors ${currentPage === 'help' 
+                ? 'text-violet-600' 
+                : 'text-gray-600 hover:text-gray-900'}`}
+            >
+              Help
             </button>
           </nav>
 

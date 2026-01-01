@@ -6,3 +6,4 @@ export { CreateIdentity } from './CreateIdentity';
 export { VerifyIdentity } from './VerifyIdentity';
 export { Credentials } from './Credentials';
 export { ZKProofGenerator } from './ZKProofGenerator';
+export { HelpDocs } from './HelpDocs';
