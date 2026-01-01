@@ -1,4 +1,4 @@
-# 🔐 VeriChain Identity Protocol
+# VeriChain Identity Protocol
 
 <div align="center">
 
@@ -15,15 +15,15 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-65%20Passing-brightgreen)](./test)
 
-[🌐 Live Demo](https://verichain-did.vercel.app) • [📖 Documentation](#-architecture) • [🎬 Video Demo](#-demo-video)
+[Live Demo](https://verichain-did.vercel.app) • [Documentation](#architecture) • [Video Demo](#demo-video)
 
 </div>
 
 ---
 
-## 🏆 QIE Blockchain Hackathon 2025 Submission
+## QIE Blockchain Hackathon 2025 Submission
 
-### 👥 Team
+### Team
 | Name | Role | Contributions |
 |------|------|---------------|
 | **Yashodip More** | Full Stack Blockchain Developer | Smart Contracts, Frontend, Architecture, ZK Circuits |
@@ -31,7 +31,7 @@
 
 ---
 
-## 💡 Why QIE Blockchain?
+## Why QIE Blockchain?
 
 VeriChain is purpose-built for QIE Blockchain, leveraging its unique advantages:
 
@@ -43,7 +43,7 @@ VeriChain is purpose-built for QIE Blockchain, leveraging its unique advantages:
 | **7 Native Oracles** | BTC, ETH, XRP, BNB, USDT, USDC, QIE | Multi-asset financial profiling |
 | **EVM Compatible** | Standard Solidity support | Easy integration with existing tools |
 
-### 🔮 QIE Oracle Integration - The Game Changer
+### QIE Oracle Integration - The Game Changer
 
 ```solidity
 // VeriChain's Oracle Adapter - Fetching LIVE price data for free
@@ -53,9 +53,9 @@ function getAssetPrice(AssetType asset) public view returns (uint256) {
 
 // Trust Score uses ALL 7 oracles for comprehensive financial profiling
 function calculateFinancialScore(address user) external view returns (uint256) {
-    uint256 btcPrice = getAssetPrice(AssetType.BTC);   // ✅ FREE
-    uint256 ethPrice = getAssetPrice(AssetType.ETH);   // ✅ FREE
-    uint256 qiePrice = getAssetPrice(AssetType.QIE);   // ✅ FREE
+    uint256 btcPrice = getAssetPrice(AssetType.BTC);   // FREE
+    uint256 ethPrice = getAssetPrice(AssetType.ETH);   // FREE
+    uint256 qiePrice = getAssetPrice(AssetType.QIE);   // FREE
     // ... comprehensive multi-asset analysis
 }
 ```
@@ -69,7 +69,7 @@ function calculateFinancialScore(address user) external view returns (uint256) {
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 ### The Identity Crisis in Web3
 
@@ -89,7 +89,7 @@ function calculateFinancialScore(address user) external view returns (uint256) {
 
 ---
 
-## 🔮 Proof-of-Real-World-Stake (PoRWS)
+## Proof-of-Real-World-Stake (PoRWS)
 
 **World's First** identity protocol that uses LIVE oracle data for trust verification.
 
@@ -115,7 +115,7 @@ function calculateFinancialScore(address user) external view returns (uint256) {
 
 ---
 
-## 🎯 Overview
+## Overview
 
 **VeriChain** is a revolutionary Decentralized Identity (DID) verification system that leverages QIE's free oracle infrastructure to create the world's first **Proof-of-Real-World-Stake** identity protocol.
 
@@ -123,16 +123,16 @@ Unlike traditional KYC systems or static blockchain identities, VeriChain dynami
 
 ### Key Features
 
-- 🔮 **Proof-of-Real-World-Stake (PoRWS)** - First protocol using LIVE oracle data for trust scores
-- 🆓 **Free QIE Oracles** - No gas overhead like Chainlink
-- 🔒 **Zero-Knowledge Proofs** - Verify credentials without revealing data
-- 📊 **Dynamic Trust Scoring** - Real-time score updates based on behavior
-- 🌐 **Cross-Chain Reputation** - Aggregate reputation from multiple blockchains
-- 🛡️ **Enterprise Security** - Multi-sig admin, rate limiting, time-locked upgrades
+- **Proof-of-Real-World-Stake (PoRWS)** - First protocol using LIVE oracle data for trust scores
+- **Free QIE Oracles** - No gas overhead like Chainlink
+- **Zero-Knowledge Proofs** - Verify credentials without revealing data
+- **Dynamic Trust Scoring** - Real-time score updates based on behavior
+- **Cross-Chain Reputation** - Aggregate reputation from multiple blockchains
+- **Enterprise Security** - Multi-sig admin, rate limiting, time-locked upgrades
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -168,7 +168,7 @@ Unlike traditional KYC systems or static blockchain identities, VeriChain dynami
 
 ---
 
-## 📜 Smart Contracts
+## Smart Contracts
 
 ### Deployed on QIE Testnet (Chain ID: 1983)
 
@@ -201,7 +201,7 @@ Score Range: 0-100
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -251,7 +251,7 @@ npm run dev
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Blockchain Layer
 - **Chain:** QIE Blockchain (25,000+ TPS, 3-sec finality)
@@ -274,7 +274,7 @@ npm run dev
 
 ---
 
-## 🔐 Zero-Knowledge Proof Circuits
+## Zero-Knowledge Proof Circuits
 
 VeriChain includes **5 production-ready Circom circuits** for privacy-preserving verification:
 
@@ -313,7 +313,7 @@ template AgeVerification() {
 
 ---
 
-## 📊 Test Results
+## Test Results
 
 ```
   65 passing (5s)
@@ -330,7 +330,7 @@ template AgeVerification() {
 
 ---
 
-## 🔐 Security Features
+## Security Features
 
 | Feature | Implementation |
 |---------|---------------|
@@ -343,7 +343,7 @@ template AgeVerification() {
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 verichain/
@@ -378,7 +378,7 @@ verichain/
 
 ---
 
-## 🎬 Demo Video
+## Demo Video
 
 [Watch the Demo on YouTube](#) *(Coming Soon)*
 
@@ -390,7 +390,7 @@ verichain/
 
 ---
 
-## 🌐 Network Configuration
+## Network Configuration
 
 ### QIE Testnet (Development)
 ```json
@@ -419,7 +419,7 @@ verichain/
 
 ---
 
-## 💼 Real-World Use Cases
+## Real-World Use Cases
 
 | Industry | Use Case | How VeriChain Helps |
 |----------|----------|---------------------|
@@ -441,26 +441,26 @@ const isVerified = identity.trustScore >= 60 && identity.isActive;
 
 ---
 
-## 📈 Roadmap
+## Roadmap
 
-- [x] ✅ Smart Contracts (7 contracts deployed)
-- [x] ✅ QIE Testnet Deployment
-- [x] ✅ React 19 Frontend
-- [x] ✅ Trust Score Algorithm with Oracle Integration
-- [x] ✅ ZK Proof UI Generator
-- [x] ✅ Multi-Sig Governance
-- [x] ✅ Rate Limiting & Anti-Spam
-- [x] ✅ Cross-Chain Reputation System
-- [x] ✅ Circom ZK Circuits (5 circuits)
-- [x] ✅ IPFS Encrypted Storage
-- [ ] 🔄 QIE Mainnet Deployment
-- [ ] 📅 Mobile App (React Native)
-- [ ] 📅 Enterprise SDK & API
-- [ ] 📅 Multi-language Support
+- [x] Smart Contracts (7 contracts deployed)
+- [x] QIE Testnet Deployment
+- [x] React 19 Frontend
+- [x] Trust Score Algorithm with Oracle Integration
+- [x] ZK Proof UI Generator
+- [x] Multi-Sig Governance
+- [x] Rate Limiting & Anti-Spam
+- [x] Cross-Chain Reputation System
+- [x] Circom ZK Circuits (5 circuits)
+- [x] IPFS Encrypted Storage
+- [ ] QIE Mainnet Deployment
+- [ ] Mobile App (React Native)
+- [ ] Enterprise SDK & API
+- [ ] Multi-language Support
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create feature branch (`git checkout -b feature/amazing-feature`)
@@ -470,13 +470,13 @@ const isVerified = identity.trustScore >= 60 && identity.isActive;
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **QIE Blockchain** - Free oracle infrastructure & high-speed network
 - **OpenZeppelin** - Battle-tested smart contract security
@@ -486,19 +486,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Contact
+## Contact
 
 **Yashodip More** - Full Stack Blockchain Developer  
 **Komal Kumavat** - Blockchain Developer
 
-📧 Email: [Contact via GitHub](https://github.com/yashodipmore)  
-🔗 Project Link: [github.com/yashodipmore/VeriChain-Identity-Protocol](https://github.com/yashodipmore/VeriChain-Identity-Protocol)
+Email: [Contact via GitHub](https://github.com/yashodipmore)  
+Project Link: [github.com/yashodipmore/VeriChain-Identity-Protocol](https://github.com/yashodipmore/VeriChain-Identity-Protocol)
 
 ---
 
 <div align="center">
 
-### 🏆 QIE Blockchain Hackathon 2025 Submission
+### QIE Blockchain Hackathon 2025 Submission
 
 **VeriChain Identity Protocol**
 
@@ -506,8 +506,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**7 Smart Contracts** • **5 ZK Circuits** • **65 Tests Passing** • **FREE Oracle Integration**
+**7 Smart Contracts** | **5 ZK Circuits** | **65 Tests Passing** | **FREE Oracle Integration**
 
-Built with ❤️ by **Yashodip More** & **Komal Kumavat**
+Built by **Yashodip More** & **Komal Kumavat**
 
 </div>
