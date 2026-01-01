@@ -15,7 +15,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-65%20Passing-brightgreen)](./test)
 
-[Live Demo](https://verichain-did.vercel.app) • [Documentation](#architecture) • [Video Demo](#demo-video)
+[Live Demo](https://veri-chain-identity-protocol.vercel.app/) • [Documentation](#architecture) • [Video Demo](#demo-video)
 
 </div>
 
