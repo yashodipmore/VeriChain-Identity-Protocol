@@ -503,15 +503,6 @@ journey
 
 ---
 
-## How to View These Diagrams
-
-1. **GitHub** - Push to repo, GitHub renders Mermaid automatically
-2. **VS Code** - Install "Markdown Preview Mermaid Support" extension
-3. **Online** - Use [mermaid.live](https://mermaid.live) to edit/export
-4. **Export as PNG/SVG** - Use mermaid CLI or online tools
-
----
-
 <div align="center">
 
 **VeriChain Identity Protocol**
