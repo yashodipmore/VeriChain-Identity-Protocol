@@ -32,6 +32,10 @@ flowchart TB
     E --> G
     C --> F
     A --> H
+
+    style UI fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style CONTRACTS fill:#f97316,stroke:#ea580c,color:#fff
+    style EXTERNAL fill:#22c55e,stroke:#16a34a,color:#fff
 ```
 
 ---
@@ -40,14 +44,19 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    IR[IdentityRegistry] --> TSC[TrustScoreCalculator]
-    TSC --> OA[OracleAdapter]
-    OA --> QIE[QIE Oracles]
+    IR[IdentityRegistry]:::core --> TSC[TrustScoreCalculator]:::core
+    TSC --> OA[OracleAdapter]:::oracle
+    OA --> QIE[QIE Oracles]:::oracle
     
-    IR --> ZKV[ZKVerifier]
-    IR --> MSA[MultiSigAdmin]
-    IR --> RL[RateLimiter]
-    TSC --> CCR[CrossChainReputation]
+    IR --> ZKV[ZKVerifier]:::security
+    IR --> MSA[MultiSigAdmin]:::security
+    IR --> RL[RateLimiter]:::security
+    TSC --> CCR[CrossChainReputation]:::rep
+
+    classDef core fill:#ef4444,stroke:#dc2626,color:#fff
+    classDef oracle fill:#f97316,stroke:#ea580c,color:#fff
+    classDef security fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef rep fill:#8b5cf6,stroke:#7c3aed,color:#fff
 ```
 
 ---
@@ -56,15 +65,22 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    User->>Frontend: Fill Form
-    Frontend->>Frontend: Encrypt Data
-    Frontend->>IPFS: Upload
-    IPFS-->>Frontend: CID
-    Frontend->>MetaMask: Sign Tx
-    MetaMask->>Contract: createIdentity()
-    Contract->>Oracle: Get Prices
-    Oracle-->>Contract: Price Data
-    Contract-->>Frontend: Success
+    participant U as User
+    participant F as Frontend
+    participant I as IPFS
+    participant M as MetaMask
+    participant C as Contract
+    participant O as Oracle
+
+    U->>F: Fill Form
+    F->>F: Encrypt Data
+    F->>I: Upload
+    I-->>F: CID
+    F->>M: Sign Tx
+    M->>C: createIdentity()
+    C->>O: Get Prices
+    O-->>C: Price Data
+    C-->>F: Success
 ```
 
 ---
@@ -73,13 +89,19 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-    User->>Frontend: Select Proof Type
-    Frontend->>Circom: Generate Witness
-    Circom-->>Frontend: Witness
-    Frontend->>SnarkJS: Create Proof
-    SnarkJS-->>Frontend: Proof + Signals
-    Frontend->>ZKVerifier: Verify On-Chain
-    ZKVerifier-->>Frontend: Valid/Invalid
+    participant U as User
+    participant F as Frontend
+    participant C as Circom
+    participant S as SnarkJS
+    participant V as ZKVerifier
+
+    U->>F: Select Proof Type
+    F->>C: Generate Witness
+    C-->>F: Witness
+    F->>S: Create Proof
+    S-->>F: Proof + Signals
+    F->>V: Verify On-Chain
+    V-->>F: Valid/Invalid
 ```
 
 ---
@@ -88,21 +110,16 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-    subgraph INPUT[Data Sources]
-        A[Oracle Data 40%]
-        B[On-Chain 30%]
-        C[Cross-Chain 20%]
-        D[Consistency 10%]
-    end
+    A[Oracle Data<br/>40%]:::orange --> E[Trust Score<br/>0-100]:::result
+    B[On-Chain<br/>30%]:::blue --> E
+    C[Cross-Chain<br/>20%]:::purple --> E
+    D[Consistency<br/>10%]:::green --> E
 
-    subgraph OUTPUT[Result]
-        E[Trust Score 0-100]
-    end
-
-    A --> E
-    B --> E
-    C --> E
-    D --> E
+    classDef orange fill:#f97316,stroke:#ea580c,color:#fff
+    classDef blue fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef purple fill:#8b5cf6,stroke:#7c3aed,color:#fff
+    classDef green fill:#22c55e,stroke:#16a34a,color:#fff
+    classDef result fill:#111827,stroke:#374151,color:#fff
 ```
 
 ---
@@ -111,13 +128,18 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    OA[OracleAdapter] --> BTC[BTC/USD]
-    OA --> ETH[ETH/USD]
-    OA --> QIE[QIE/USD]
-    OA --> BNB[BNB/USD]
-    OA --> XRP[XRP/USD]
-    OA --> USDT[USDT/USD]
-    OA --> USDC[USDC/USD]
+    OA[OracleAdapter]:::main --> BTC[BTC/USD]:::coin
+    OA --> ETH[ETH/USD]:::coin
+    OA --> QIE[QIE/USD]:::qie
+    OA --> BNB[BNB/USD]:::coin
+    OA --> XRP[XRP/USD]:::coin
+    OA --> USDT[USDT/USD]:::stable
+    OA --> USDC[USDC/USD]:::stable
+
+    classDef main fill:#f97316,stroke:#ea580c,color:#fff
+    classDef coin fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef qie fill:#22c55e,stroke:#16a34a,color:#fff
+    classDef stable fill:#8b5cf6,stroke:#7c3aed,color:#fff
 ```
 
 ---
@@ -126,10 +148,16 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    A[Access Control] --> B[Multi-Sig 3/5]
-    B --> C[Rate Limiting]
-    C --> D[AES-256 Encryption]
-    D --> E[ReentrancyGuard]
+    A[Access Control]:::blue --> B[Multi-Sig 3/5]:::purple
+    B --> C[Rate Limiting]:::orange
+    C --> D[AES-256 Encryption]:::green
+    D --> E[ReentrancyGuard]:::red
+
+    classDef blue fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef purple fill:#8b5cf6,stroke:#7c3aed,color:#fff
+    classDef orange fill:#f97316,stroke:#ea580c,color:#fff
+    classDef green fill:#22c55e,stroke:#16a34a,color:#fff
+    classDef red fill:#ef4444,stroke:#dc2626,color:#fff
 ```
 
 ---
@@ -138,13 +166,18 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    A[User Input] --> B[Validate]
-    B --> C[Encrypt]
-    C --> D[Hash]
-    D --> E[IPFS]
-    D --> F[Blockchain]
-    F --> G[ZK Verify]
-    F --> H[Trust Score]
+    A[User Input]:::input --> B[Validate]:::process
+    B --> C[Encrypt]:::process
+    C --> D[Hash]:::process
+    D --> E[IPFS]:::storage
+    D --> F[Blockchain]:::storage
+    F --> G[ZK Verify]:::verify
+    F --> H[Trust Score]:::verify
+
+    classDef input fill:#ef4444,stroke:#dc2626,color:#fff
+    classDef process fill:#f97316,stroke:#ea580c,color:#fff
+    classDef storage fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    classDef verify fill:#22c55e,stroke:#16a34a,color:#fff
 ```
 
 ---
@@ -170,6 +203,10 @@ flowchart TB
         H[Circom]
         I[SnarkJS]
     end
+
+    style FRONTEND fill:#3b82f6,stroke:#1d4ed8,color:#fff
+    style BLOCKCHAIN fill:#f97316,stroke:#ea580c,color:#fff
+    style ZK fill:#8b5cf6,stroke:#7c3aed,color:#fff
 ```
 
 ---
@@ -178,11 +215,16 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    A[Development] --> B[QIE Testnet]
-    B --> C[QIE Mainnet]
+    A[Development]:::dev --> B[QIE Testnet]:::test
+    B --> C[QIE Mainnet]:::prod
     
-    D[Vercel] --> B
+    D[Vercel]:::host --> B
     D -.-> C
+
+    classDef dev fill:#8b5cf6,stroke:#7c3aed,color:#fff
+    classDef test fill:#f97316,stroke:#ea580c,color:#fff
+    classDef prod fill:#22c55e,stroke:#16a34a,color:#fff
+    classDef host fill:#3b82f6,stroke:#1d4ed8,color:#fff
 ```
 
 ---
